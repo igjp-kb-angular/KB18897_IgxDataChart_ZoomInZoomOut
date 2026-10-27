@@ -1,0 +1,43 @@
+<div style="max-width: 600px; padding: 24px; margin: auto; display: flex; flex-direction: column; gap: 8px">
+  <div style="display: flex; gap: 8px">
+    <button igxButton="contained" (click)="onZoomIn()">Zoom In</button>
+    <button igxButton="contained" (click)="onZoomOut()">Zoom Out</button>
+  </div>
+  <igx-legend #legend orientation="Horizontal"></igx-legend>
+  <igx-data-chart
+    #chart
+    width="100%"
+    height="400px"
+    [dataSource]="sampleData"
+    [legend]="legend"
+    computedPlotAreaMarginMode="Series"
+    defaultInteraction="DragZoom"
+    [isHorizontalZoomEnabled]="true"
+    [isVerticalZoomEnabled]="true"
+  >
+    <igx-category-x-axis #xAxis label="year"></igx-category-x-axis>
+    <igx-numeric-y-axis #yAxis title="TWh"></igx-numeric-y-axis>
+
+    <igx-line-series
+      name="europeSeries"
+      title="Europe"
+      [xAxis]="xAxis"
+      [yAxis]="yAxis"
+      valueMemberPath="europe"
+    ></igx-line-series>
+    <igx-line-series
+      name="chinaSeries"
+      title="China"
+      [xAxis]="xAxis"
+      [yAxis]="yAxis"
+      valueMemberPath="china"
+    ></igx-line-series>
+    <igx-line-series
+      name="americaSeries"
+      title="America"
+      [xAxis]="xAxis"
+      [yAxis]="yAxis"
+      valueMemberPath="america"
+    ></igx-line-series>
+  </igx-data-chart>
+</div>
